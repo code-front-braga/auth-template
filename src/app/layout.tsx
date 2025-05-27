@@ -1,10 +1,7 @@
-import './globals.css';
+import { LayoutProps } from '@/interfaces/layout-interface';
+import '@/styles/globals.css';
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: LayoutProps) {
 	return (
 		<html lang="en">
 			<body className={`antialiased`}>{children}</body>
