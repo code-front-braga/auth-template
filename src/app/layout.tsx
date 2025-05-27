@@ -1,18 +1,13 @@
-import "./globals.css";
-
+import './globals.css';
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body className={`antialiased`}>{children}</body>
+		</html>
+	);
 }
