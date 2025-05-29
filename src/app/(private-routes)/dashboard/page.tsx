@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation';
 
 import { AuthRoutes } from '@/app/(public-routes)/auth/enums/auth-routes';
-import { auth } from '@/lib/auth/auth';
+import { auth, signOut } from '@/lib/auth/auth';
+import { Button } from '@/ui/button';
 
 export default async function DashboardPage() {
 	const session = await auth();
@@ -9,5 +10,17 @@ export default async function DashboardPage() {
 
 	if (!session) redirect(AuthRoutes.AUTH);
 
-	return <h1>Bem-vindo(a) {userName}</h1>;
+	async function handleSignOut() {
+		'use server';
+		await signOut();
+	}
+
+	return (
+		<>
+			<h1>Bem-vindo(a) {userName}</h1>
+			<form action={handleSignOut}>
+				<Button type="submit">Sair</Button>
+			</form>
+		</>
+	);
 }
