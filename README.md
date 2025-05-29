@@ -83,14 +83,14 @@ No GitHub OAuth App, adicione http://localhost:3000/api/auth/callback/github com
 No Google Cloud Console (APIs & Services > Credentials), adicione http://localhost:3000/api/auth/callback/google como "Authorized redirect URIs" para seu ID de cliente Web.
 
 4. Configurar o Banco de Dados (Prisma)
-   Certifique-se de que seu banco de dados PostgreSQL esteja rodando (ou SQLite, se estiver usando dev.db).
-   Execute as migrações do Prisma para criar as tabelas no seu DB:
+Certifique-se de que seu banco de dados PostgreSQL esteja rodando (ou SQLite, se estiver usando dev.db).
+Execute as migrações do Prisma para criar as tabelas no seu DB:
 
-   ```Bash
-   pnpm prisma db push
-   ```
+```Bash
+pnpm prisma db push
+```
 
-# ou npx prisma db push
+### ou npx prisma db push
 
 (Opcional) Gere o cliente Prisma:
 
@@ -101,9 +101,9 @@ pnpm prisma generate
 ### ou npx prisma generate
 
 5. Rodar a Aplicação
-   ```Bash
-   pnpm dev
-   ```
+```Bash
+pnpm dev
+```
 
 ### ou npm run dev
 
