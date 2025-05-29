@@ -1,9 +1,9 @@
-<div style="text-align: center">
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
 <img src='/public/preview-desktop.png' alt='Página inicial Desktop' />
-<img src='/public/preview-mobile.png' alt='Página inicial mobile' />
 <img src='/public/signin-desktop.png' alt='Página de login desktop' />
-<img src='/public/signin-mobile.png' alt='Página de login mobile' />
 <img src='/public/signup-desktop.png' alt='Página de cadastro desktop' />
+<img src='/public/preview-mobile.png' alt='Página inicial mobile' />
+<img src='/public/signin-mobile.png' alt='Página de login mobile' />
 <img src='/public/signup-mobile.png' alt='Página de cadastro mobile' />
 </div>
 
