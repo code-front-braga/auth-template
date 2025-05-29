@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 Template de Autenticação de Usuários Completo
+Um template robusto e responsivo para autenticação de usuários, ideal para iniciar seus projetos Next.js com um sistema de login e cadastro seguro e funcional.
 
-## Getting Started
+✨ Visão Geral
+Este projeto é um ponto de partida completo para integrar autenticação em sua aplicação Next.js. Ele oferece fluxos de login e cadastro por credenciais, além de integração com provedores de autenticação social populares como Google e GitHub. A interface é totalmente responsiva, garantindo uma ótima experiência em qualquer dispositivo.
 
-First, run the development server:
+[Deploy]('https://auth-template-zeta.vercel.app/auth')
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+🌟 Funcionalidades
+Autenticação por Credenciais: Cadastro e Login utilizando e-mail e senha.
+Login Social Integrado:
+Autenticação via Google OAuth.
+Autenticação via GitHub OAuth.
+Telas Dedicadas: Páginas de Login e Cadastro com layouts intuitivos.
+Design Responsivo: Interface adaptável a diferentes tamanhos de tela (desktop, tablet, mobile).
+Validação de Formulários: Utiliza Zod para validação robusta dos dados de entrada.
+Gerenciamento de Senhas: Armazenamento seguro de senhas com bcrypt-ts.
+Gerenciamento de Sessão: Controle de sessão via JWT (JSON Web Tokens) com NextAuth.js.
+🛠️ Tecnologias Utilizadas
+Next.js 14+ (App Router): Framework React para aplicações web full-stack, com foco em performance.
+React: Biblioteca JavaScript para construção de interfaces de usuário.
+TypeScript: Superset do JavaScript que adiciona tipagem estática.
+NextAuth.js (Auth.js): Solução de autenticação flexível e segura para Next.js.
+Prisma ORM: ORM moderno e amigável para bancos de dados, facilitando a interação com o PostgreSQL.
+PostgreSQL: Sistema de gerenciamento de banco de dados relacional (você pode adaptar para SQLite para desenvolvimento local se preferir).
+Tailwind CSS: Framework CSS utility-first para estilização rápida e responsiva.
+Zod: Biblioteca de validação de esquemas para dados.
+bcrypt-ts: Biblioteca para hashing de senhas.
+React Hook Form: Para gerenciamento eficiente de formulários.
+Sonner: Para notificações (toasts) amigáveis ao usuário.
+React Icons: Para ícones escaláveis e personalizáveis.
+🚀 Como Rodar Localmente
+Siga os passos abaixo para configurar e rodar o projeto em sua máquina:
+
+1. Clone o repositório
+
+```Bash
+git clone [git@github.com:code-front-braga/auth-template.git]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```Bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# ou npm install
 
-## Learn More
+# ou yarn install
 
-To learn more about Next.js, take a look at the following resources:
+3. Configurações de Variáveis de Ambiente
+   Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Database
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+DATABASE_URL="...url gerada..."
 
-## Deploy on Vercel
+# NextAuth.js
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+AUTH_SECRET="SEGREDO_DE_SESSAO_BEM_LONGO_E_ALEATORIO" # Gerar com: openssl rand -base64 32
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Google OAuth
+
+AUTH_GOOGLE_ID="SEU_GOOGLE_CLIENT_ID"
+AUTH_GOOGLE_SECRET="SEU_GOOGLE_CLIENT_SECRET"
+
+# GitHub OAuth
+
+AUTH_GITHUB_ID="SEU_GITHUB_CLIENT_ID"
+AUTH_GITHUB_SECRET="SEU_GITHUB_CLIENT_SECRET"
+
+Certifique-se de configurar suas credenciais OAuth do Google e GitHub nos respectivos portais de desenvolvedor e obter os IDs e Segredos de Cliente.
+No GitHub OAuth App, adicione http://localhost:3000/api/auth/callback/github como "Authorization callback URL(s)".
+No Google Cloud Console (APIs & Services > Credentials), adicione http://localhost:3000/api/auth/callback/google como "Authorized redirect URIs" para seu ID de cliente Web.
+
+4. Configurar o Banco de Dados (Prisma)
+   Certifique-se de que seu banco de dados PostgreSQL esteja rodando (ou SQLite, se estiver usando dev.db).
+   Execute as migrações do Prisma para criar as tabelas no seu DB:
+
+   ```Bash
+   pnpm prisma db push
+   ```
+
+# ou npx prisma db push
+
+(Opcional) Gere o cliente Prisma:
+
+```Bash
+pnpm prisma generate
+```
+
+# ou npx prisma generate
+
+5. Rodar a Aplicação
+   ```Bash
+   pnpm dev
+   ```
+
+# ou npm run dev
+
+# ou yarn dev
+
+O aplicativo estará disponível em http://localhost:3000.
+
+📄 Licença
+Este projeto está licenciado sob a licença MIT License.
