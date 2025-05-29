@@ -2,12 +2,12 @@ import { User } from 'generated/prisma';
 
 import { SignUpFormData } from '@/lib/zod/auth/sign-up-zod-schema';
 
-interface AuthServiceResponse {
+interface SignUpServiceResponse {
 	user?: Omit<User, 'password'>;
 	success?: string;
 	error?: string;
 }
 
-export interface AuthServiceInterface {
-	signUp: (data: SignUpFormData) => Promise<AuthServiceResponse>;
+export interface SignUpServiceInterface {
+	signUp: (data: SignUpFormData) => Promise<SignUpServiceResponse>;
 }

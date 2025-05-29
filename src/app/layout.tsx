@@ -1,11 +1,19 @@
 import '@/styles/globals.css';
 
 import { LayoutProps } from '@/interfaces/layout-interface';
+import { ThemeProvider } from '@/providers/theme-provider';
+import { Toaster } from '@/ui/sonner';
 
 export default function RootLayout({ children }: LayoutProps) {
 	return (
-		<html lang="en">
-			<body className={`antialiased`}>{children}</body>
+		<html lang="en" suppressHydrationWarning>
+			<body className={`antialiased`}>
+				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+					{children}
+
+					<Toaster richColors position="top-center" />
+				</ThemeProvider>
+			</body>
 		</html>
 	);
 }

@@ -4,10 +4,10 @@ import { Gender } from 'generated/prisma';
 import { prisma } from '@/lib/db/prisma';
 import { signUpFormSchema } from '@/lib/zod/auth/sign-up-zod-schema';
 
-import { AuthMessages } from '../enums/services-messages';
-import { AuthServiceInterface } from '../interfaces/auth-interface';
+import { AuthMessages } from '../enums/auth-messages';
+import { SignUpServiceInterface } from '../interfaces/auth-interface';
 
-export const UserAuthService: AuthServiceInterface = {
+export const UserSignUpService: SignUpServiceInterface = {
 	async signUp(data) {
 		try {
 			const validatedFields = signUpFormSchema.safeParse(data);

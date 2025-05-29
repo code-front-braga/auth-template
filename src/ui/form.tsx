@@ -1,20 +1,19 @@
 'use client';
 
-import * as React from 'react';
 import * as LabelPrimitive from '@radix-ui/react-label';
 import { Slot } from '@radix-ui/react-slot';
+import * as React from 'react';
 import {
 	Controller,
-	FormProvider,
-	useFormContext,
-	useFormState,
 	type ControllerProps,
 	type FieldPath,
 	type FieldValues,
+	FormProvider,
+	useFormContext,
+	useFormState,
 } from 'react-hook-form';
 
 import { cn } from '@/lib/shadcn/utils';
-import { Label } from '@/components/ui/label';
 
 const Form = FormProvider;
 
@@ -83,10 +82,10 @@ function FormLabel({ className, ...props }: React.ComponentProps<typeof LabelPri
 	const { error, formItemId } = useFormField();
 
 	return (
-		<Label
+		<LabelPrimitive.Label
 			data-slot="form-label"
 			data-error={!!error}
-			className={cn('data-[error=true]:text-destructive', className)}
+			className={cn('data-[error=true]:text-destructive text-xs md:text-sm', className)}
 			htmlFor={formItemId}
 			{...props}
 		/>
@@ -129,10 +128,15 @@ function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
 	}
 
 	return (
-		<p data-slot="form-message" id={formMessageId} className={cn('text-destructive text-sm', className)} {...props}>
+		<p
+			data-slot="form-message"
+			id={formMessageId}
+			className={cn('text-destructive absolute -bottom-4 text-xs md:-bottom-5 md:text-sm', className)}
+			{...props}
+		>
 			{body}
 		</p>
 	);
 }
 
-export { useFormField, Form, FormItem, FormLabel, FormControl, FormDescription, FormMessage, FormField };
+export { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, useFormField };

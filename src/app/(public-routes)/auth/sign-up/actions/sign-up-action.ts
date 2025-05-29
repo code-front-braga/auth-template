@@ -2,12 +2,12 @@
 
 import { SignUpFormData } from '@/lib/zod/auth/sign-up-zod-schema';
 
-import { AuthMessages } from '../../enums/services-messages';
-import { UserAuthService } from '../../services/user-auth-services';
+import { AuthMessages } from '../../enums/auth-messages';
+import { UserSignUpService } from '../../services/user-auth-services';
 
 export async function signUpAction(data: SignUpFormData) {
 	try {
-		const action = await UserAuthService.signUp(data);
+		const action = await UserSignUpService.signUp(data);
 
 		if (action.error) return { error: action.error };
 

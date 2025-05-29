@@ -1,4 +1,7 @@
+import { Gender } from 'generated/prisma';
 import { z } from 'zod';
+
+import { SignUpZodMessages } from '@/app/(public-routes)/auth/enums/zod.messages';
 
 export const signUpFormSchema = z
 	.object({
@@ -17,14 +20,13 @@ export const signUpFormSchema = z
 
 		email: z
 			.string({ message: 'E-mail é obrigatório.' })
-			.email({ message: 'Formato de E-mail inválido.' })
+			.email({ message: 'E-mail inválido.' })
 			.trim()
 			.transform(value => value.toLowerCase()),
 
 		phone: z
-			.string({ message: 'Telefone é obrigatório.' })
-			.min(10, { message: 'Telefone deve ter pelo menos 10 dígitos.' })
-			.max(11, { message: 'Telefone deve ter no máximo 11 dígitos.' })
+			.string()
+			.min(1, { message: 'Telefone é obrigatório.' })
 			.transform(value => value.replace(/\D/g, ''))
 			.refine(
 				value => {
@@ -33,18 +35,18 @@ export const signUpFormSchema = z
 				{ message: 'Apenas números.' },
 			),
 
-		gender: z.string({
-			message: 'Gênero é obrigatório.',
+		gender: z.nativeEnum(Gender, {
+			errorMap: () => ({ message: 'Gênero inválido. Selecione uma opção válida.' }),
 		}),
 
 		password: z
-			.string({ message: 'Senha é obrigatória.' })
-			.min(6, { message: 'Mínimo de 6 caracteres.' })
-			.max(12, { message: 'Máximo de 12 caracteres.' })
-			.regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$/, {
-				message:
-					'Senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.',
-			}),
+			.string()
+			.trim()
+			.min(6, { message: SignUpZodMessages.PASSWORD_MIN_ERROR })
+			.regex(/[A-Z]/, { message: SignUpZodMessages.PASSWORD_UPPER_CASE_ERROR })
+			.regex(/[a-z]/, { message: SignUpZodMessages.PASSWORD_LOWER_CASE_ERROR })
+			.regex(/\d/, { message: SignUpZodMessages.PASSWORD_NUMBER_ERROR })
+			.regex(/[^A-Za-z0-9]/, { message: SignUpZodMessages.PASSWORD_SPECIAL_CARACTER_ERROR }),
 
 		confirmPassword: z.string({
 			message: 'Confirmação de senha é obrigatória.',

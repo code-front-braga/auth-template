@@ -10,5 +10,6 @@ export enum AuthMessages {
 	USER_NOT_FOUND = 'Usuário não encontrado em nosso sistema.',
 	INVALID_CREDENTIALS = 'Credenciais inválidas.',
 	USER_SIGNED_IN_SUCCESS = 'Usuário logado com sucesso!',
+	UNEXPECTED_SIGNIN_ERROR = 'Ocorreu um erro inesperado ao tentar fazer login. Por favor, tente novamente mais tarde.',
 	AUTH_ERROR_DEFAULT = 'Erro de autenticação. Verifique seus dados.',
 }
