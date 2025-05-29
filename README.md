@@ -13,7 +13,7 @@ Um template robusto e responsivo para autenticação de usuários, ideal para in
 ✨ Visão Geral
 Este projeto é um ponto de partida completo para integrar autenticação em sua aplicação Next.js. Ele oferece fluxos de login e cadastro por credenciais, além de integração com provedores de autenticação social populares como Google e GitHub. A interface é totalmente responsiva, garantindo uma ótima experiência em qualquer dispositivo.
 
-[Deploy]('https://auth-template-zeta.vercel.app/auth')
+[Deploy](https://auth-template-zeta.vercel.app/auth)
 
 🌟 Funcionalidades
 Autenticação por Credenciais: Cadastro e Login utilizando e-mail e senha.
