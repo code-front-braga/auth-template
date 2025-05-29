@@ -53,27 +53,27 @@ git clone [git@github.com:code-front-braga/auth-template.git]
 pnpm install
 ```
 
-# ou npm install
+### ou npm install
 
-# ou yarn install
+### ou yarn install
 
 3. Configurações de Variáveis de Ambiente
    Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
 
-# Database
+## Database
 
 DATABASE_URL="...url gerada..."
 
-# NextAuth.js
+## NextAuth.js
 
 AUTH_SECRET="SEGREDO_DE_SESSAO_BEM_LONGO_E_ALEATORIO" # Gerar com: openssl rand -base64 32
 
-# Google OAuth
+## Google OAuth
 
 AUTH_GOOGLE_ID="SEU_GOOGLE_CLIENT_ID"
 AUTH_GOOGLE_SECRET="SEU_GOOGLE_CLIENT_SECRET"
 
-# GitHub OAuth
+## GitHub OAuth
 
 AUTH_GITHUB_ID="SEU_GITHUB_CLIENT_ID"
 AUTH_GITHUB_SECRET="SEU_GITHUB_CLIENT_SECRET"
@@ -98,16 +98,16 @@ No Google Cloud Console (APIs & Services > Credentials), adicione http://localho
 pnpm prisma generate
 ```
 
-# ou npx prisma generate
+### ou npx prisma generate
 
 5. Rodar a Aplicação
    ```Bash
    pnpm dev
    ```
 
-# ou npm run dev
+### ou npm run dev
 
-# ou yarn dev
+### ou yarn dev
 
 O aplicativo estará disponível em http://localhost:3000.
 
