@@ -8,7 +8,7 @@ export function MainAuthHeader() {
 			<ImageContainer>
 				<CustomFillImage
 					src="/auth.svg"
-					alt="Um homem olhando para o celular."
+					alt="Uma mulher com uma capa de herói."
 					className="block rounded-4xl object-contain"
 				/>
 			</ImageContainer>

@@ -5,7 +5,7 @@ import { prisma } from '@/lib/db/prisma';
 import { signUpFormSchema } from '@/lib/zod/auth/sign-up-zod-schema';
 
 import { AuthMessages } from '../enums/auth-messages';
-import { SignUpServiceInterface } from '../interfaces/auth-interface';
+import { SignUpServiceInterface } from '../interfaces/sign-up-interface';
 
 export const UserSignUpService: SignUpServiceInterface = {
 	async signUp(data) {

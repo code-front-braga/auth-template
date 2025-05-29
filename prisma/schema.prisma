@@ -31,7 +31,7 @@ model User {
   image         String?
   password      String?
   phone         String?
-  gender        Gender
+  gender        Gender?
 
   accounts Account[]
   sessions Session[]

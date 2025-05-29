@@ -48,56 +48,37 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 	],
 	callbacks: {
 		async signIn({ user, account }) {
-			if (account?.provider !== 'credentials') {
-				const existingUser = await prisma.user.findUnique({ where: { email: user.email ?? '' } });
-				if (!existingUser) {
-					return false;
-				}
-				return true;
-			}
+			if (account?.provider !== 'credentials') return true;
+
+			const existingUser = await prisma.user.findUnique({ where: { email: user.email ?? '' } });
+			if (!existingUser) return false;
 
 			return true;
 		},
-		async jwt({ token, user, account }) {
-			// O objeto 'user' é preenchido aqui APENAS na primeira vez que o token é criado (login)
-			if (account?.provider === 'credentials' && user) {
-				token.id = user.id; // Garanta que o id do user está no token.sub se não estiver
-				token.name = user.name;
-				token.email = user.email;
-				token.isOAuth = false; // explicitly false for credentials
-			} else if (account?.provider !== 'credentials' && account) {
-				// Lógica para OAuth
-				token.isOAuth = true;
-			}
-			// O restante da lógica de busca do usuário do prisma para preencher o token
-			// é boa para garantir que o token esteja atualizado com os dados do DB a cada requisição
-			if (!token.sub) return token; // Se sub não está definido, não há user logado (shouldn't happen often)
+		async jwt({ token }) {
+			if (!token.sub) return token;
 
 			const existingUser = await prisma.user.findFirst({ where: { id: token.sub } });
-			if (!existingUser) return token; // User não encontrado no DB
+			if (!existingUser) return token;
 
-			// Você pode refatorar essa parte para ser mais eficiente
-			// Aqui, apenas atualiza as propriedades do token com base no user do DB
+			const existingAccount = await prisma.account.findFirst({ where: { userId: existingUser.id } });
+
+			token.isOAuth = !!existingAccount;
 			token.name = existingUser.name;
 			token.email = existingUser.email;
 			token.picture = existingUser.image;
-			// Garanta que o isOAuth seja definido corretamente se não tiver sido na primeira vez (user, account)
-			const existingAccount = await prisma.account.findFirst({
-				where: { userId: existingUser.id, provider: { not: 'credentials' } },
-			});
-			token.isOAuth = !!existingAccount;
 
 			return token;
 		},
 		async session({ session, token }) {
-			if (token.sub && session.user) {
-				session.user.id = token.sub;
-				session.user.name = token.name ?? '';
-				session.user.email = token.email ?? '';
-				session.user.image = token.picture ?? '';
-				session.user.isOAuth = token.isOAuth as boolean;
-			}
-			return session;
+			return {
+				...session,
+				user: {
+					...session.user,
+					id: token.sub,
+					isOAuth: token.isOAuth,
+				},
+			};
 		},
 	},
 	pages: { signIn: '/auth/sign-in' },
