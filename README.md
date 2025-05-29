@@ -53,10 +53,6 @@ git clone [git@github.com:code-front-braga/auth-template.git]
 pnpm install
 ```
 
-### ou npm install
-
-### ou yarn install
-
 3. Configurações de Variáveis de Ambiente
    Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
 
@@ -88,26 +84,24 @@ Execute as migrações do Prisma para criar as tabelas no seu DB:
 
 ```Bash
 pnpm prisma db push
+ou
+npx prisma db push
 ```
-
-### ou npx prisma db push
 
 (Opcional) Gere o cliente Prisma:
 
 ```Bash
 pnpm prisma generate
+ou
+npx prisma generate
 ```
-
-### ou npx prisma generate
 
 5. Rodar a Aplicação
 ```Bash
 pnpm dev
+ou
+npm run dev
 ```
-
-### ou npm run dev
-
-### ou yarn dev
 
 O aplicativo estará disponível em http://localhost:3000.
 
