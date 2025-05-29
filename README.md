@@ -1,3 +1,12 @@
+<div style="text-align: center">
+<img src='/public/preview-desktop.png' alt='Página inicial Desktop' />
+<img src='/public/preview-mobile.png' alt='Página inicial mobile' />
+<img src='/public/signin-desktop.png' alt='Página de login desktop' />
+<img src='/public/signin-mobile.png' alt='Página de login mobile' />
+<img src='/public/signup-desktop.png' alt='Página de cadastro desktop' />
+<img src='/public/signup-mobile.png' alt='Página de cadastro mobile' />
+</div>
+
 🚀 Template de Autenticação de Usuários Completo
 Um template robusto e responsivo para autenticação de usuários, ideal para iniciar seus projetos Next.js com um sistema de login e cadastro seguro e funcional.
 
